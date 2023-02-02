@@ -24,6 +24,19 @@
       background-image: url(../images/feature/background-desktop.png);
     }
   }
+  &__items {
+    &--notDesktop {
+      padding: 0;
+      list-style-type: none;
+      margin-bottom: 50px;
+      width: 260px;
+      overflow: hidden;
+      
+      @include onDesktop {
+        display: none;
+      }
+    }
+  }
 
   &__content {
      
@@ -36,6 +49,7 @@
 
   &__item {
     margin-bottom: 50px;
+    
 
     @include onDesktop {
       margin-bottom: 60px;
@@ -57,16 +71,8 @@
     }
   }
 
-  &__slide-switch {
-    margin: 0 auto;
-
-    @include onTablet {
-      margin: 0;
-    }
-     
-    @include onDesktop {
-      display: none;
-    }
+  &__container {
+    display: flex;
   }
 }
    
@@ -84,11 +90,13 @@
     text-transform: uppercase;
     color: #0c797a;
     margin-bottom: 20px;
+    width: 260px;
 
     @include onDesktop {
       font-size: 34px;
       line-height: 42px;
       margin-bottom: 30px;
+      width: 380px;
     }
   }
 
@@ -127,67 +135,77 @@
 }
 
 .slide-switch {
-  width: max-content;
-  padding: 21px 0 175px 30px;
+  margin: 0 auto;
+
+  @include onTablet {
+    margin: 0;
+  }
+   
+  @include onDesktop {
+    display: none;
+  }
+  padding-bottom: 250px;
   box-sizing: border-box;
+  display: flex;
+  width: 96px;
+  height: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
 
-  &__link {
-    text-decoration: none;
-    font-size: 11px;
-    line-height: 14px;
-    color: #bdbdbd;
-     
-    position: relative;
-  
+  &__button {
+    &--prev {
+      background-image: url(../images/feature/switch_black_prev.svg);
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: #d6ecec;
+      width: 48px;
+      height: 14px;
+      border: none;
 
-    &-text {
-      display: inline-block;
-
-      &--start {
-        font-size: 16px;
-        line-height: 20px;
-        color: $colorGray;
+      &:hover {
+        background-image: url(../images/feature/switch_blue_prev.svg);
       }
+
+      &[disabled] {
+        background-image: url(../images/feature/switch_grey_prev.svg);
+      }
+    }
+
+    &--next {
+      background-image: url(../images/feature/switch_black_next.svg);
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: #d6ecec;
+      width: 48px;
+      height: 14px;
+      border: none;
+      margin-bottom: 10px;
+
+      &:hover {
+        background-image: url(../images/feature/switch_blue_next.svg);
+      }
+
+      &[disabled] {
+        background-image: url(../images/feature/switch_grey_next.svg);
+      }
+    }
+  }
+
+  &__text {
+    display: inline-block;
+
+    &--start {
+      font-size: 16px;
+      line-height: 20px;
+      color: $colorGray;
+    }
         
-      &--end {
-        font-size: 11px;
-        line-height: 14px;
-        color: #bdbdbd;
-      }
-    }
-
-    &::before {
-      position: absolute;
-      top: -200%;
-      left: -70%;
-      content: "";
-      display: inline-block;
-      width: 48px;
-      height: 13px;
-      background-image: url(../images/feature/switch__grey.svg);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: -200%;
-      left: 50%;
-      display: inline-block;
-      width: 48px;
-      height: 13px;
-      background-image: url(../images/feature/switch_black.svg);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-    }
-
-    &:hover {
-      &::after {
-        background-image: url(../images/feature/switch_blue.svg);
-      }
+    &--end {
+      font-size: 11px;
+      line-height: 14px;
+      color: #bdbdbd;
     }
   }
 }
